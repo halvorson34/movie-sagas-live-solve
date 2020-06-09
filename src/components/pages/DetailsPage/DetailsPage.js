@@ -16,6 +16,11 @@ class DetailsPage extends Component {
   clickBackToList = (event) => {
     this.props.history.push("/");
   };
+
+  clickEditMovie = (event) => {
+    this.props.history.push(`/edit/${this.props.match.params.id}`);
+  };
+
   render() {
     return (
       <div className="alignLeft">
@@ -23,7 +28,7 @@ class DetailsPage extends Component {
 
         <div>
           <button onClick={this.clickBackToList}>Back to List</button>
-          <button>Edit</button>
+          <button onClick={this.clickEditMovie}>Edit</button>
         </div>
 
         <h3>{this.props.store.details.title}</h3>
