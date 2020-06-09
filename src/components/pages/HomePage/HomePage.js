@@ -8,8 +8,8 @@ class HomePage extends Component {
     });
   }
 
-  clickMovieDetails = (event) => {
-    this.props.history.push("/details");
+  clickMovieDetails = (event, id) => {
+    this.props.history.push(`/details/${id}`);
   };
 
   render() {
@@ -20,7 +20,7 @@ class HomePage extends Component {
           <div
             key={index}
             className="movieListItem"
-            onClick={this.clickMovieDetails}
+            onClick={(event) => this.clickMovieDetails(event, item.id)}
           >
             <img src={item.poster} alt={item.title} />
             <div>
