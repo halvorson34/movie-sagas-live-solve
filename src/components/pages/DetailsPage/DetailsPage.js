@@ -14,10 +14,13 @@ class DetailsPage extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="alignLeft">
         <h2>Details</h2>
-        <button onClick={this.clickBackToList}>Back to List</button>
-        <p>Selected ID is: {this.props.match.params.id}</p>
+
+        <div>
+          <button onClick={this.clickBackToList}>Back to List</button>
+          <button>Edit</button>
+        </div>
         <h3>{this.props.store.details.title}</h3>
         <p>{this.props.store.details.description}</p>
       </div>

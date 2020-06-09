@@ -46,3 +46,7 @@
   padding: 0 20px;
   text-align: left;
 }
+
+.alignLeft {
+  text-align: left;
+}
