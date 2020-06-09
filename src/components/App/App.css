@@ -37,6 +37,7 @@
 
 .movieListItem > *:first-child {
   width: 25%;
+  max-width: 250px;
 }
 
 .movieListItem > *:last-child {
