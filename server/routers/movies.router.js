@@ -3,26 +3,37 @@ const pool = require("../modules/pool");
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    // get all movie data
-    const queryText = `SELECT * FROM "movies" ORDER BY "title" ASC;`;
+router.get("/", (req, res) => {
+  // get all movie data
+  const queryText = `SELECT * FROM "movies" ORDER BY "title" ASC;`;
 
-    pool.query(queryText)
+  pool
+    .query(queryText)
     .then((responseDb) => {
-        res.send(responseDb.rows);
+      res.send(responseDb.rows);
     })
     .catch((err) => {
-        console.warn(err);
-        res.sendStatus(500);
+      console.warn(err);
+      res.sendStatus(500);
     });
 });
 
-router.get('/', (req, res) => {
-    // get single movie data
-};
+router.get("/details/:id", (req, res) => {
+  // get single movie data
+  const queryText = `SELECT * FROM "movies" WHERE "id" = $1;`;
+  const movieId = req.params.id;
 
-router.put('/', (req, res) => {
-    
-};
+  pool
+    .query(queryText, [movieId])
+    .then((responseDb) => {
+      res.send(responseDb.rows);
+    })
+    .catch((err) => {
+      console.warn(err);
+      res.sendStatus(500);
+    });
+});
 
-module.export = router;
+router.put("/", (req, res) => {});
+
+module.exports = router;
