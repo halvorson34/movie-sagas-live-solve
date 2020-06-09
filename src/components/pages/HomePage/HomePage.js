@@ -1,6 +1,13 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 class HomePage extends Component {
+  componentDidMount() {
+    this.props.dispatch({
+      type: "GET_ALL_MOVIES",
+    });
+  }
+
   render() {
     return (
       <div>
@@ -10,4 +17,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default connect()(HomePage);
