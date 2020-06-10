@@ -28,6 +28,27 @@ class EditPage extends Component {
     this.props.history.push(`/details/${this.props.match.params.id}`);
   };
 
+  clickSaveMovieDetails = (event) => {
+    let newDetails = {
+      ...this.state,
+      id: this.props.match.params.id,
+    };
+
+    if (newDetails.title == null || newDetails.title === "") {
+      newDetails.title = this.props.store.details.title;
+    }
+
+    if (newDetails.description == null || newDetails.description === "") {
+      newDetails.description = this.props.store.description.title;
+    }
+
+    this.props.dispatch({
+      type: "PUT_MOVIE",
+      payload: newDetails,
+    });
+    this.props.history.push(`/details/${this.props.match.params.id}`);
+  };
+
   render() {
     return (
       <div>
@@ -36,7 +57,7 @@ class EditPage extends Component {
 
         <div>
           <button onClick={this.clickCancel}>Cancel</button>
-          <button>Save</button>
+          <button onClick={this.clickSaveMovieDetails}>Save</button>
         </div>
 
         <div>
